@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>返校通行证(2分钟内有效)</title>
+    <link rel="stylesheet" href="./css/weui.min.css">
+    <script type="text/javascript" src="./js/weui.min.js" charset="UTF-8"></script>
+</head>
+<body ontouchstart>
+
+<div id="bodyDiv">
+	<p style="text-align:center;background:fuchsia;"><br><img src="./img/pass2.png" width="330px" height="225px" alt=""><br><font style="font-size:100px"><span id='theDate'></span></font></p>
+	<div class="weui-cells__title">学生返校通行证</div>
+	<div class="weui-cells">
+		<div class="weui-cell  weui-cell_example">
+			<div class="weui-cell__hd"><img src="./img/person.png" alt="" style="width: 20px; margin-right: 16px; display: block;"></div>
+			<div class="weui-cell__bd">
+				<p>学号：
+                    <script>
+                        var va1 = localStorage.value1
+                        document.write(va1)
+                    </script>
+                </p>
+			</div>
+		</div>
+		<div class="weui-cell  weui-cell_example">
+			<div class="weui-cell__hd"><img src="./img/person.png" alt="" style="width: 20px; margin-right: 16px; display: block;"></div>
+			<div class="weui-cell__bd">
+				<p>姓名：
+                    <script>
+                        var va2 = localStorage.value2
+                        document.write(va2)
+                    </script>
+                </p>
+			</div>
+		</div>
+		<div class="weui-cell  weui-cell_example">
+			<div class="weui-cell__hd"><img src="./img/person.png" alt="" style="width: 20px; margin-right: 16px; display: block;"></div>
+			<div class="weui-cell__bd">
+				<p>学院：
+                    <script>
+                        var va3 = localStorage.value3
+                        document.write(va3)
+                    </script>
+                </p>
+			</div>
+		</div>
+		<div class="weui-cell  weui-cell_example">
+			<div class="weui-cell__hd"><img src="./img/time.png" alt="" style="width: 20px; margin-right: 16px; display: block;"></div>
+			<div class="weui-cell__bd">
+				<p>时间：
+                    <script type="text/javascript">
+                        var t = new Date();
+                        var year = t.getFullYear();
+                        var month = t.getMonth() + 1;
+                        var day = t.getDate();
+                        // var hour = t.getHours();
+                        // var minute = t.getMinutes();
+                        // var second = t.getSeconds();
+                        var nowTime = year + "/" + month + "/" + day;
+                        document.write(nowTime);
+                    </script>
+                </p>
+			</div>
+		</div>
+		
+	</div>
+	<br/>
+	<br/>
+	<div class="weui-footer">
+	<p>版权所有 &copy; 辽宁大学</p>
+    <input style="opacity:0;" type="color" id="myColor" onchange="ChangeColor()">
+</div>
+<script type="text/javascript">
+var color;
+var UI;
+
+function ChangeColor() {　
+    color = document.getElementById("myColor").value
+    console.log(color);　　　　　　　　　　　　　　 //改变颜色的事件
+}
+
+function changeUI() {　
+    UI = document.getElementById("myColorUI")
+    UI.style.background = color
+}
+</script>
+
+<div class="mpa-sc mpa-plugin-article-gatherer mpa-new mpa-rootsc" data-z="100" style="display: block;" id="mpa-rootsc-article-gatherer"></div>
+<div class="mpa-sc mpa-plugin-image-gatherer mpa-new mpa-rootsc" data-z="100" style="display: block;" id="mpa-rootsc-image-gatherer"></div>
+<div class="mpa-sc mpa-plugin-page-clipper mpa-new mpa-rootsc" data-z="100" style="display: block;" id="mpa-rootsc-page-clipper"></div>
+<div class="mpa-sc mpa-plugin-text-gatherer mpa-new mpa-rootsc" data-z="100" style="display: block;" id="mpa-rootsc-text-gatherer"></div>
+<div class="mpa-sc mpa-plugin-video-gatherer mpa-new mpa-rootsc" data-z="100" style="display: block;" id="mpa-rootsc-video-gatherer"></div>
+<div class="mpa-sc mpa-plugin-side-function-panel mpa-new mpa-rootsc" data-z="110" style="display: block;" id="mpa-rootsc-side-function-panel"></div>
+<div class="mpa-sc mpa-plugin-notifier mpa-new mpa-rootsc" data-z="120" style="display: block;" id="mpa-rootsc-notifier"></div>
+<div class="mpa-sc mpa-plugin-notification-manager mpa-new mpa-rootsc" data-z="130" style="display: block;" id="mpa-rootsc-notification-manager"></div>
+	</div>
+</div>
+<script type="text/javascript" src="./js/getpass.js"></script>
+<script>
+	function dateFormat(fmt, date) {
+    let ret;
+    const opt = {
+        "Y+": date.getFullYear().toString(),        // 年
+        "m+": (date.getMonth() + 1).toString(),     // 月
+        "d+": date.getDate().toString(),            // 日
+        "H+": date.getHours().toString(),           // 时
+        "M+": date.getMinutes().toString(),         // 分
+        "S+": date.getSeconds().toString()          // 秒
+        // 有其他格式化字符需求可以继续添加，必须转化成字符串
+    };
+    for (let k in opt) {
+        ret = new RegExp("(" + k + ")").exec(fmt);
+        if (ret) {
+            fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+        };
+    };
+    return fmt;
+	}
+	var d = new Date();
+		document.getElementById("theDate").innerText=dateFormat("HH:MM:SS", d);
+	window.setInterval(function(){
+		var d = new Date();
+		document.getElementById("theDate").innerText=dateFormat("HH:MM:SS", d);
+	},1000)
+</script>
+</body>
+</html>
