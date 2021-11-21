@@ -1,107 +1,124 @@
-
 <!DOCTYPE html>
+<!-- saved from url=(0048)http://tjxx.lnu.edu.cn/getfxpass.asp?qjid=854973 -->
 <html>
+<script title="这是划词翻译注入的脚本，用于解决在监听了 message 事件的页面导致异常的问题，详情见 https://github.com/lmk123/crx-selection-translate/issues/1150">
+    (function e() {
+        function e() {
+            const e = [];
+            return {
+                paramsArr: e,
+                theOnlyOneHandler: n => {
+                    const t = n.data;
+                    if ("string" != typeof t || !t.startsWith(r))
+                        for (let t = e.length - 1; t >= 0; t--) {
+                            const {
+                                handler: r,
+                                options: o
+                            } = e[t];
+                            "function" == typeof r ? r.call(window, n) : r.handleEvent(n), "object" == typeof o && o.once && e.splice(t, 1)
+                        }
+                }
+            }
+        }
+        const n = e(),
+            t = e(),
+            r = "greetings from hcfy:";
+        let o = null;
+        const s = e => {
+            if (n.theOnlyOneHandler(e), o) {
+                const n = e.data;
+                if ("string" == typeof n && n.startsWith(r)) return;
+                o.call(window, e)
+            }
+        };
+        window.addEventListener("message", s), window.addEventListener("message", t.theOnlyOneHandler, !0);
+        const i = window.addEventListener,
+            a = window.removeEventListener;
+        window.addEventListener = function(e, r, o) {
+            if ("message" !== e) return i.call(window, e, r, o);
+            const s = ("object" == typeof o ? o.capture : o) ? t.paramsArr : n.paramsArr;
+            if (s.some((e => e.handler === r))) return;
+            const a = {
+                handler: r,
+                options: o
+            };
+            s.push(a), "object" == typeof o && o.signal && o.signal.addEventListener("abort", (() => {
+                const e = s.indexOf(a);
+                e >= 0 && s.splice(e, 1)
+            }))
+        }, window.removeEventListener = function(e, r, o) {
+            if ("message" !== e) return a.call(window, e, r, o);
+            const s = ("object" == typeof o ? o.capture : o) ? t.paramsArr : n.paramsArr,
+                i = s.findIndex((e => e.handler === r));
+            i >= 0 && s.splice(i, 1)
+        };
+        const d = Object.getOwnPropertyDescriptor(window, "onmessage") || {
+            configurable: !0,
+            enumerable: !0,
+            value: null
+        };
+        return Object.defineProperty(window, "onmessage", {
+            enumerable: !0,
+            configurable: !0,
+            get: () => o,
+            set(e) {
+                o = "function" == typeof e ? e : null
+            }
+        }), () => {
+            window.addEventListener = i, window.removeEventListener = a, window.removeEventListener("message", s), window.removeEventListener("message", t.theOnlyOneHandler, !0), n.paramsArr.forEach((({
+                handler: e,
+                options: n
+            }) => {
+                window.addEventListener("message", e, n)
+            })), t.paramsArr.forEach((({
+                handler: e,
+                options: n
+            }) => {
+                window.addEventListener("message", e, n)
+            })), Object.defineProperty(window, "onmessage", d), window.onmessage = o
+        }
+    })()
+</script>
+
 <head>
-	<meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-	<meta http-equiv="Pragma" content="no-cache" />
-	<meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
     <title>返校通行证(2分钟内有效)</title>
     <link rel="stylesheet" href="./css/weui.min.css">
     <script type="text/javascript" src="./js/weui.min.js" charset="UTF-8"></script>
+    <style>
+        hcfy-result.__hcfy__result__loaded__.__hcfy__result__both__ {
+            border: 1px dotted
+        }
+    </style>
+    <style class="mpa-style-fix ImageGatherer">
+        .FotorFrame {
+            position: fixed!important
+        }
+    </style>
+    <style class="mpa-style-fix SideFunctionPanel">
+        .weui-desktop-online-faq__wrp {
+            top: 304px!important;
+            bottom: unset!important
+        }
+        
+        .weui-desktop-online-faq__wrp .weui-desktop-online-faq__switch {
+            width: 38px!important
+        }
+    </style>
 </head>
-<body ontouchstart>
 
-<div id="bodyDiv">
-	<p style="text-align:center;background:fuchsia;"><br><img src="./img/pass1.png" width="330px" height="225px" alt=""><br><font style="font-size:100px"><span id='theDate'></span></font></p>
-	<div class="weui-cells__title">学生返校通行证</div>
-	<div class="weui-cells">
-		<div class="weui-cell  weui-cell_example">
-			<div class="weui-cell__hd"><img src="./img/person.png" alt="" style="width: 20px; margin-right: 16px; display: block;"></div>
-			<div class="weui-cell__bd">
-				<p>学号：
-                    <script>
-                        var va1 = localStorage.value1
-                        document.write(va1)
-                    </script>
-                </p>
-			</div>
-		</div>
-		<div class="weui-cell  weui-cell_example">
-			<div class="weui-cell__hd"><img src="./img/person.png" alt="" style="width: 20px; margin-right: 16px; display: block;"></div>
-			<div class="weui-cell__bd">
-				<p>姓名：
-                    <script>
-                        var va2 = localStorage.value2
-                        document.write(va2)
-                    </script>
-                </p>
-			</div>
-		</div>
-		<div class="weui-cell  weui-cell_example">
-			<div class="weui-cell__hd"><img src="./img/person.png" alt="" style="width: 20px; margin-right: 16px; display: block;"></div>
-			<div class="weui-cell__bd">
-				<p>学院：
-                    <script>
-                        var va3 = localStorage.value3
-                        document.write(va3)
-                    </script>
-                </p>
-			</div>
-		</div>
-		<div class="weui-cell  weui-cell_example">
-			<div class="weui-cell__hd"><img src="./img/time.png" alt="" style="width: 20px; margin-right: 16px; display: block;"></div>
-			<div class="weui-cell__bd">
-				<p>时间：
-                    <script type="text/javascript">
-                        var t = new Date();
-                        var year = t.getFullYear();
-                        var month = t.getMonth() + 1;
-                        var day = t.getDate();
-                        // var hour = t.getHours();
-                        // var minute = t.getMinutes();
-                        // var second = t.getSeconds();
-                        var nowTime = year + "/" + month + "/" + day;
-                        document.write(nowTime);
-                    </script>
-                </p>
-			</div>
-		</div>
-		
-	</div>
-	<br/>
-	<br/>
-	<div class="weui-footer">
-	<p>版权所有 &copy; 辽宁大学</p>
-    <input style="opacity:0;" type="color" id="myColor" onchange="ChangeColor()">
-</div>
-<script type="text/javascript">
-var color;
-var UI;
+<body ontouchstart="" mpa-version="7.16.14" mpa-extension-id="ibefaeehajgcpooopoegkifhgecigeeg">
 
-function ChangeColor() {　
-    color = document.getElementById("myColor").value
-    console.log(color);　　　　　　　　　　　　　　 //改变颜色的事件
-}
-
-function changeUI() {　
-    UI = document.getElementById("myColorUI")
-    UI.style.background = color
-}
-</script>
-
-<div class="mpa-sc mpa-plugin-article-gatherer mpa-new mpa-rootsc" data-z="100" style="display: block;" id="mpa-rootsc-article-gatherer"></div>
-<div class="mpa-sc mpa-plugin-image-gatherer mpa-new mpa-rootsc" data-z="100" style="display: block;" id="mpa-rootsc-image-gatherer"></div>
-<div class="mpa-sc mpa-plugin-page-clipper mpa-new mpa-rootsc" data-z="100" style="display: block;" id="mpa-rootsc-page-clipper"></div>
-<div class="mpa-sc mpa-plugin-text-gatherer mpa-new mpa-rootsc" data-z="100" style="display: block;" id="mpa-rootsc-text-gatherer"></div>
-<div class="mpa-sc mpa-plugin-video-gatherer mpa-new mpa-rootsc" data-z="100" style="display: block;" id="mpa-rootsc-video-gatherer"></div>
-<div class="mpa-sc mpa-plugin-side-function-panel mpa-new mpa-rootsc" data-z="110" style="display: block;" id="mpa-rootsc-side-function-panel"></div>
-<div class="mpa-sc mpa-plugin-notifier mpa-new mpa-rootsc" data-z="120" style="display: block;" id="mpa-rootsc-notifier"></div>
-<div class="mpa-sc mpa-plugin-notification-manager mpa-new mpa-rootsc" data-z="130" style="display: block;" id="mpa-rootsc-notification-manager"></div>
-	</div>
-</div>
-<script type="text/javascript" src="./js/getpass.js"></script>
+    <div id="bodyDiv">
+        <p onclick="changeUI()" id="myColorUI" style="text-align:center;background:green;"><br><img src="./img/pass1.png" width="330px" height="225px" alt=""><br>
+            <font style="font-size:100px">
+                <span id='theDate'></span>
+                <script type="text/javascript" src="./js/getpass.js"></script>
 <script>
 	function dateFormat(fmt, date) {
     let ret;
@@ -129,5 +146,98 @@ function changeUI() {　
 		document.getElementById("theDate").innerText=dateFormat("HH:MM:SS", d);
 	},1000)
 </script>
+            </font>
+        </p>
+        <div class="weui-cells__title">学生返校通行证</div>
+        <div class="weui-cells">
+            <div class="weui-cell  weui-cell_example">
+                <div class="weui-cell__hd"><img src="./img/person.png" alt="" style="width: 20px; margin-right: 16px; display: block;"></div>
+                <div class="weui-cell__bd">
+                    <p>学号：
+                        <script>
+                            var va1 = localStorage.value1
+                            document.write(va1)
+                        </script>
+                    </p>
+                </div>
+            </div>
+            <div class="weui-cell  weui-cell_example">
+                <div class="weui-cell__hd"><img src="./img/person.png" alt="" style="width: 20px; margin-right: 16px; display: block;"></div>
+                <div class="weui-cell__bd">
+                    <p>姓名：
+                        <script>
+                            var va2 = localStorage.value2
+                            document.write(va2)
+                        </script>
+                    </p>
+                </div>
+            </div>
+            <div class="weui-cell  weui-cell_example">
+                <div class="weui-cell__hd"><img src="./img/person.png" alt="" style="width: 20px; margin-right: 16px; display: block;"></div>
+                <div class="weui-cell__bd">
+                    <p>学院：
+                        <script>
+                            var va3 = localStorage.value3
+                            document.write(va3)
+                        </script>
+                    </p>
+                </div>
+            </div>
+            <div class="weui-cell  weui-cell_example">
+                <div class="weui-cell__hd"><img src="./img/time.png" alt="" style="width: 20px; margin-right: 16px; display: block;"></div>
+                <div class="weui-cell__bd">
+                    <p>时间：
+                        <script type="text/javascript">
+                            var t = new Date();
+                            var year = t.getFullYear();
+                            var month = t.getMonth() + 1;
+                            var day = t.getDate();
+                            // var hour = t.getHours();
+                            // var minute = t.getMinutes();
+                            // var second = t.getSeconds();
+                            var nowTime = year + "/" + month + "/" + day;
+                            document.write(nowTime);
+                        </script>
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <br>
+        <div class="weui-footer">
+            <p>版权所有 © 辽宁大学</p>
+            <input style="opacity:0;" type="color" id="myColor" onchange="ChangeColor()">
+        </div>
+    </div>
+    <script type="text/javascript">
+        var color;
+        var UI;
+
+        function ChangeColor() {　
+            color = document.getElementById("myColor").value
+            console.log(color);　　　　　　　　　　　　　　 //改变颜色的事件
+        }
+
+        function changeUI() {　
+            UI = document.getElementById("myColorUI")
+            UI.style.background = color
+        }
+    </script>
+
+    <div class="mpa-sc mpa-plugin-article-gatherer mpa-new mpa-rootsc" data-z="100" style="display: block;" id="mpa-rootsc-article-gatherer"></div>
+    <div class="mpa-sc mpa-plugin-image-gatherer mpa-new mpa-rootsc" data-z="100" style="display: block;" id="mpa-rootsc-image-gatherer"></div>
+    <div class="mpa-sc mpa-plugin-page-clipper mpa-new mpa-rootsc" data-z="100" style="display: block;" id="mpa-rootsc-page-clipper"></div>
+    <div class="mpa-sc mpa-plugin-text-gatherer mpa-new mpa-rootsc" data-z="100" style="display: block;" id="mpa-rootsc-text-gatherer"></div>
+    <div class="mpa-sc mpa-plugin-video-gatherer mpa-new mpa-rootsc" data-z="100" style="display: block;" id="mpa-rootsc-video-gatherer"></div>
+    <div class="mpa-sc mpa-plugin-side-function-panel mpa-new mpa-rootsc" data-z="110" style="display: block;" id="mpa-rootsc-side-function-panel"></div>
+    <div class="mpa-sc mpa-plugin-notifier mpa-new mpa-rootsc" data-z="120" style="display: block;" id="mpa-rootsc-notifier"></div>
+    <div class="mpa-sc mpa-plugin-notification-manager mpa-new mpa-rootsc" data-z="130" style="display: block;" id="mpa-rootsc-notification-manager"></div>
 </body>
+<div style="all: initial;">
+    <div id="__hcfy__" style="all: initial;"></div>
+</div>
+<div style="all: initial;">
+    <div style="all: initial;"></div>
+</div>
+
 </html>
